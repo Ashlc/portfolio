@@ -1,10 +1,10 @@
-import { FC, useState, useEffect } from "react";
-import { VisuallyHidden } from "@react-aria/visually-hidden";
 import { SwitchProps, useSwitch } from "@heroui/switch";
+import { VisuallyHidden } from "@react-aria/visually-hidden";
 import clsx from "clsx";
+import { Moon, Sun } from "lucide-react";
+import { FC, useEffect, useState } from "react";
 
 import { useTheme } from "@/hooks/use-theme";
-import { SunFilledIcon, MoonFilledIcon } from "@/components/icons";
 
 export interface ThemeSwitchProps {
   className?: string;
@@ -42,7 +42,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
 
   return (
     <Component
-      aria-label={isSelected ? "Switch to dark mode" : "Switch to light mode"}
+      aria-label={isSelected ? "Ativar modo escuro" : "Destaivar modo escuro"}
       {...getBaseProps({
         className: clsx(
           "px-px transition-opacity hover:opacity-80 cursor-pointer",
@@ -61,7 +61,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
             [
               "w-auto h-auto",
               "bg-transparent",
-              "rounded-lg",
+              "rounded",
               "flex items-center justify-center",
               "group-data-[selected=true]:bg-transparent",
               "!text-default-500",
@@ -73,11 +73,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
           ),
         })}
       >
-        {isSelected ? (
-          <MoonFilledIcon size={22} />
-        ) : (
-          <SunFilledIcon size={22} />
-        )}
+        {isSelected ? <Moon size={22} /> : <Sun size={22} />}
       </div>
     </Component>
   );

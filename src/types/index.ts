@@ -4,10 +4,13 @@ export type IconSvgProps = SVGProps<SVGSVGElement> & {
   size?: number;
 };
 
+export type WorkStatus = "ongoing" | "completed";
+
 export type Work = {
   id: string;
   title: string;
   subtitle: string;
+  technologies?: string[];
   description: string;
   roles: string[];
   workPlace: string;
@@ -16,5 +19,5 @@ export type Work = {
   link?: string;
   repo?: string;
   images?: string[];
-  status?: "Em andamento" | "Concluído";
+  status?: WorkStatus;
 };

@@ -1,5 +1,8 @@
 import { HeroUIProvider, Link } from "@heroui/react";
+import { LucideGithub, LucideLinkedin } from "lucide-react";
 import { Outlet, useHref, useNavigate } from "react-router-dom";
+
+import { ThemeSwitch } from "@/components/theme-switch";
 
 export default function DefaultLayout() {
   const navigate = useNavigate();
@@ -7,20 +10,29 @@ export default function DefaultLayout() {
   return (
     <HeroUIProvider navigate={navigate} useHref={useHref}>
       <div className="relative flex flex-col h-screen">
-        <main className="container mx-auto max-w-[90vw] px-6 flex-grow pt-16">
+        <header className="w-full flex items-center justify-between px-6 h-[52px]">
+          <h1 className="text-xl font-semibold text-primary">Ashl C.</h1>
+          <div className="flex flex-row gap-4 text-default-500">
+            <Link
+              className="text-default-500 rounded"
+              color="foreground"
+              href="https://www.linkedin.com/in/isadorabpaz/"
+            >
+              <LucideLinkedin size={20} />
+            </Link>
+            <Link
+              className="text-default-500 rounded"
+              color="foreground"
+              href="https://github.com/Ashlc"
+            >
+              <LucideGithub size={20} />
+            </Link>
+            <ThemeSwitch />
+          </div>
+        </header>
+        <main className="container mx-auto max-w-[95vw] h-[calc(100vh-52px)] flex-grow py-4">
           <Outlet />
         </main>
-        <footer className="w-full flex items-center justify-center py-3">
-          <Link
-            isExternal
-            className="flex items-center gap-1 text-current"
-            href="https://github.com/Ashlc"
-            title="heroui.com homepage"
-          >
-            <span className="text-default-600">Created by</span>
-            <p className="text-primary">Isadora Paz</p>
-          </Link>
-        </footer>
       </div>
     </HeroUIProvider>
   );
