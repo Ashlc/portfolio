@@ -56,7 +56,7 @@ export const works: Work[] = [
     title: "Lighthouse",
     subtitle: "PJ de desenvolvimento de software",
     description: descriptions.lighthouse,
-    roles: ["Desenvolvedor Full-stack, UI/UX Designer"],
+    roles: ["Desenvolvedor Full-stack, UI/UX Designer, DevOps"],
     technologies: ["React", "Laravel", "TailwindCSS", "TypeScript", "PHP"],
     workPlace: "Freelance",
     when: "2025",
