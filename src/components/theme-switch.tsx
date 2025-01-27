@@ -31,6 +31,9 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
   } = useSwitch({
     isSelected: theme === "light",
     onChange,
+    defaultSelected:
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches,
   });
 
   useEffect(() => {

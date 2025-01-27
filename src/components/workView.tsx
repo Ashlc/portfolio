@@ -36,7 +36,7 @@ const WorkView = ({ workIndex }: Props) => {
   };
 
   return (
-    <ScrollShadow className="w-[50vw] border border-default-200 rounded-xl">
+    <ScrollShadow className="w-full lg:w-[50vw] border border-default-200 rounded-xl">
       <div className="flex flex-col p-6 border-b border-default-200 dark:border-b-0 dark:bg-default-100 gap-4">
         <div>
           <h1 className="text-2xl font-bold">{work.title}</h1>
