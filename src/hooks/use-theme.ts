@@ -1,6 +1,6 @@
 // originally written by @imoaazahmed
 
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 const ThemeProps = {
   key: "theme",
@@ -10,11 +10,22 @@ const ThemeProps = {
 
 type Theme = typeof ThemeProps.light | typeof ThemeProps.dark;
 
-export const useTheme = (defaultTheme?: Theme) => {
+export const useTheme = () => {
   const [theme, setTheme] = useState<Theme>(() => {
+    if (typeof window === "undefined") {
+      return ThemeProps.light;
+    }
     const storedTheme = localStorage.getItem(ThemeProps.key) as Theme | null;
 
-    return storedTheme || (defaultTheme ?? ThemeProps.light);
+    if (storedTheme) {
+      return storedTheme;
+    }
+
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+    return prefersDark ? ThemeProps.dark : ThemeProps.light;
   });
 
   const isDark = useMemo(() => {
@@ -25,26 +36,27 @@ export const useTheme = (defaultTheme?: Theme) => {
     return theme === ThemeProps.light;
   }, [theme]);
 
-  const _setTheme = (theme: Theme) => {
-    localStorage.setItem(ThemeProps.key, theme);
-    document.documentElement.classList.remove(
-      ThemeProps.light,
-      ThemeProps.dark,
+  const setLightTheme = useCallback(() => {
+    setTheme(ThemeProps.light);
+  }, []);
+
+  const setDarkTheme = useCallback(() => {
+    setTheme(ThemeProps.dark);
+  }, []);
+
+  const toggleTheme = useCallback(() => {
+    setTheme((prevTheme) =>
+      prevTheme === ThemeProps.dark ? ThemeProps.light : ThemeProps.dark,
     );
-    document.documentElement.classList.add(theme);
-    setTheme(theme);
-  };
-
-  const setLightTheme = () => _setTheme(ThemeProps.light);
-
-  const setDarkTheme = () => _setTheme(ThemeProps.dark);
-
-  const toggleTheme = () =>
-    theme === ThemeProps.dark ? setLightTheme() : setDarkTheme();
+  }, []);
 
   useEffect(() => {
-    _setTheme(theme);
-  });
+    const root = document.documentElement;
+
+    root.classList.remove(ThemeProps.light, ThemeProps.dark);
+    root.classList.add(theme);
+    localStorage.setItem(ThemeProps.key, theme);
+  }, [theme]);
 
   return { theme, isDark, isLight, setLightTheme, setDarkTheme, toggleTheme };
 };

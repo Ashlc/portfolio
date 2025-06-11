@@ -31,14 +31,11 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
   } = useSwitch({
     isSelected: theme === "light",
     onChange,
-    defaultSelected:
-      window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches,
   });
 
   useEffect(() => {
     setIsMounted(true);
-  }, [isMounted]);
+  }, []);
 
   // Prevent Hydration Mismatch
   if (!isMounted) return <div className="w-6 h-6" />;
