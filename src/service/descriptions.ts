@@ -11,4 +11,6 @@ export const descriptions = {
   bumy: "Bumy é o meu primeiro contrato como freelancer. Dentro do projeto, fui responsável pela prototipação e desenvolvimento integral da aplicação, sendo a única pessoa no front-end. Participei de reuniões semanais, onde apresentava o progresso do projeto e discutia com o cliente as próximas etapas. O projeto está na reta final, apenas no estágio de elminação de bugs e ajustes finais e já conta com um ambiente de homologação.",
   lighthouse:
     "Atualmente participo da equipe da Lighthouse Software Systems, que desenvolve um sistema de gestão de provedores de internet em parceria com uma empresa. O sistema é desenvolvido em React e Laravel, e conta com uma equipe de 4 desenvolvedores. Devido a confidencialidade do projeto, não posso fornecer muitos detalhes, mas posso dizer que é um projeto de grande porte, com muitas funcionalidades e desafios técnicos.",
+  andarilho:
+    "Andarilho é um projeto de denúncias de acessibilidade desenvolvido para a disciplina de Projeto de Software do curso de Ciência da Computação da Universidade Federal de Alagoas (UFAL). O projeto foi desenvolvido em React, com deploy no Vercel, em um período de 3 meses, com uma equipe de 5 desenvolvedores.\n\nÉ possível ver a landing page e a tela de login no link abaixo, mas a API não está no ar devido a custos de hospedagem.",
 };

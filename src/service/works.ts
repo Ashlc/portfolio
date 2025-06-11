@@ -1,5 +1,6 @@
 import { descriptions } from "./descriptions";
 
+import andarilho from "@/images/Andarilho/cover.png";
 import avalies from "@/images/Avalies/cover.png";
 import bumy from "@/images/Bumy/cover.png";
 import lighthouse from "@/images/Lighthouse/cover.png";
@@ -68,6 +69,27 @@ export const works: Work[] = [
       "https://raw.githubusercontent.com/Ashlc/portfolio/refs/heads/main/src/images/Lighthouse/home.png",
     ],
     link: "https://lhs.digital/",
+  },
+  {
+    id: "9",
+    title: "Andarilho",
+    subtitle: "Denúncias de acessibilidade",
+    description: descriptions.andarilho,
+    technologies: ["React", "TailwindCSS", "TypeScript", "Mapbox"],
+    roles: ["Desenvolvedor Front-End, UI/UX Designer"],
+    workPlace: "Freelance",
+    when: "2025",
+    status: "completed",
+    cover: andarilho,
+    images: [
+      "https://raw.githubusercontent.com/Ashlc/portfolio/refs/heads/main/src/images/Andarilho/create-report.png",
+      "https://raw.githubusercontent.com/Ashlc/portfolio/refs/heads/main/src/images/Andarilho/map.png",
+      "https://raw.githubusercontent.com/Ashlc/portfolio/refs/heads/main/src/images/Andarilho/reports.png",
+      "https://raw.githubusercontent.com/Ashlc/portfolio/refs/heads/main/src/images/Andarilho/dkt-map.png",
+      "https://raw.githubusercontent.com/Ashlc/portfolio/refs/heads/main/src/images/Andarilho/dkt-report.png",
+      "https://raw.githubusercontent.com/Ashlc/portfolio/refs/heads/main/src/images/Andarilho/login.png",
+    ],
+    link: "https://andarilho.vercel.app/",
   },
   {
     id: "1",
