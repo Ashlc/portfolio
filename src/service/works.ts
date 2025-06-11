@@ -19,7 +19,7 @@ export const works: Work[] = [
     roles: ["UI/UX Designer, Desenvolvedor Front-End"],
     workPlace: "Freelance",
     when: "2025",
-    status: "ongoing",
+    status: "completed",
     cover: bumy,
     images: [
       "https://raw.githubusercontent.com/Ashlc/portfolio/refs/heads/main/src/images/Bumy/briefing.png",
@@ -63,7 +63,9 @@ export const works: Work[] = [
     status: "completed",
     cover: lighthouse,
     images: [
-      "https://raw.githubusercontent.com/Ashlc/portfolio/refs/heads/main/src/images/Lighthouse/imagem_2025-01-23_115018234.png",
+      "https://raw.githubusercontent.com/Ashlc/portfolio/refs/heads/main/src/images/Lighthouse/audit.png",
+      "https://raw.githubusercontent.com/Ashlc/portfolio/refs/heads/main/src/images/Lighthouse/modules.png",
+      "https://raw.githubusercontent.com/Ashlc/portfolio/refs/heads/main/src/images/Lighthouse/home.png",
     ],
     link: "https://lhs.digital/",
   },
