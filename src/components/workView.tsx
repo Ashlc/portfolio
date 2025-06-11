@@ -1,5 +1,7 @@
 import { Chip, Divider, Link, ScrollShadow, Tooltip } from "@heroui/react";
+import { AnimationSequence, useAnimate } from "framer-motion";
 import { Briefcase, Calendar, PlaySquare } from "lucide-react";
+import { useEffect } from "react";
 
 import Gallery from "./gallery";
 import { GithubIcon } from "./icons";
@@ -20,6 +22,27 @@ type ChipStyle = {
 };
 
 const WorkView = ({ workIndex }: Props) => {
+  const [scope, animate] = useAnimate();
+
+  useEffect(() => {
+    if (scope.current) {
+      const sequence: AnimationSequence = [
+        [
+          scope.current,
+          { filter: "blur(8px)", translate: "0 10px" },
+          { duration: 0.4 },
+        ],
+        [
+          scope.current,
+          { filter: "blur(0px)", translate: "0 0px" },
+          { ease: "easeInOut" },
+        ],
+      ];
+
+      animate(sequence);
+    }
+  }, [workIndex, scope, animate]);
+
   const work = works[workIndex];
   const { theme } = useTheme();
   const statusChip: Record<WorkStatus, ChipStyle> = {
@@ -36,7 +59,10 @@ const WorkView = ({ workIndex }: Props) => {
   };
 
   return (
-    <ScrollShadow className="w-full lg:w-[50vw] border border-default-200 rounded-xl">
+    <ScrollShadow
+      ref={scope}
+      className="w-full lg:w-[50vw] border border-default-200 rounded-xl overflow-hidden"
+    >
       <div className="flex flex-col p-6 border-b border-default-200 dark:border-b-0 dark:bg-default-100 gap-4">
         <div>
           <h1 className="text-2xl font-bold">{work.title}</h1>
@@ -63,7 +89,7 @@ const WorkView = ({ workIndex }: Props) => {
           <p className="text-justify whitespace-pre-wrap">{work.description}</p>
         </div>
         <Divider />
-        <div className="flex flex-row gap-8 items-center">
+        <div className="flex flex-row gap-8 items-center flex-wrap w-full">
           {work.status && (
             <Chip
               className={`font-medium uppercase text-xs ${statusChip[work.status].background} ${statusChip[work.status].foreground}`}
@@ -81,7 +107,7 @@ const WorkView = ({ workIndex }: Props) => {
             <p>{work.workPlace}</p>
           </div>
         </div>
-        <div className="flex flex-row items-center gap-4">
+        <div className="flex flex-row items-center gap-4 flex-wrap w-full">
           {work.link && (
             <Tooltip content="Ver projeto" placement="top">
               <Link
